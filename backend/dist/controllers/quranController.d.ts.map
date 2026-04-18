@@ -1,0 +1,1 @@
+{"version":3,"file":"quranController.d.ts","sourceRoot":"","sources":["../../src/controllers/quranController.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAG5C,eAAO,MAAM,YAAY,GAAI,KAAK,OAAO,EAAE,KAAK,QAAQ,SAOvD,CAAC;AAEF,eAAO,MAAM,gBAAgB,GAAI,KAAK,OAAO,EAAE,KAAK,QAAQ,mDAc3D,CAAC;AAEF,eAAO,MAAM,WAAW,GAAI,KAAK,OAAO,EAAE,KAAK,QAAQ,mDAWtD,CAAC"}
