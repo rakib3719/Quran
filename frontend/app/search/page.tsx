@@ -27,7 +27,7 @@ export default function SearchPage() {
   }, [query]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-900 text-white">
       <Header title="Search Quran" showBack />
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
@@ -36,31 +36,31 @@ export default function SearchPage() {
             placeholder="Search in translations..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-800 text-white"
           />
         </div>
-        {loading && <p className="text-center text-gray-500">Searching...</p>}
+        {loading && <p className="text-center text-gray-300">Searching...</p>}
         <div className="space-y-6">
           {results.map((result, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6">
+            <div key={index} className="bg-gray-800 rounded-lg shadow-md p-6 border border-gray-700">
               <div className="flex justify-between items-start mb-4">
                 <div>
-                  <Link href={`/surah/${result.surah.number}`} className="text-blue-600 hover:text-blue-800 font-medium">
+                  <Link href={`/surah/${result.surah.number}`} className="text-blue-400 hover:text-blue-300 font-medium">
                     {result.surah.englishName} ({result.surah.number}:{result.ayah.numberInSurah})
                   </Link>
                 </div>
               </div>
-              <p className="text-xl font-arabic text-right text-gray-800 leading-relaxed mb-4" style={{ fontSize: 'var(--arabic-font-size, 24px)', fontFamily: 'var(--arabic-font, var(--font-amiri))' }}>
+              <p className="text-xl font-arabic text-right text-gray-200 leading-relaxed mb-4" style={{ fontSize: 'var(--arabic-font-size, 24px)', fontFamily: 'var(--arabic-font, var(--font-amiri))' }}>
                 {result.ayah.text}
               </p>
-              <p className="text-gray-700 leading-relaxed" style={{ fontSize: 'var(--translation-font-size, 16px)' }}>
+              <p className="text-gray-300 leading-relaxed" style={{ fontSize: 'var(--translation-font-size, 16px)' }}>
                 {result.translation}
               </p>
             </div>
           ))}
         </div>
         {query.trim().length > 2 && results.length === 0 && !loading && (
-          <p className="text-center text-gray-500">No results found.</p>
+          <p className="text-center text-gray-400">No results found.</p>
         )}
       </main>
     </div>

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
   --arabic-font-size: 24px;
   --translation-font-size: 16px;
   --arabic-font: var(--font-amiri);
@@ -19,13 +19,6 @@
 
 .font-arabic {
   font-family: var(--arabic-font);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
