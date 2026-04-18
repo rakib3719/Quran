@@ -1,5 +1,6 @@
 const getAllSurahs = async()=>{
     const response = await fetch('https://api.quran.com/api/v4/chapters');
+    console.log('Response from API:', response);
     const data = await response.json();
     return data.chapters;
 }

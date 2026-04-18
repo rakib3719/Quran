@@ -4,6 +4,7 @@ import quranService from '../modules/quran/services/quranService';
 
 export const getAllSurahs = (req: Request, res: Response) => {
   try {
+
     const surahs = quranService.getAllSurahs();
     res.json(surahs);
   } catch (error) {
