@@ -46,54 +46,68 @@ export default function SettingsSidebar({ isOpen, onClose }: SettingsSidebarProp
 
   return (
     <div className="fixed inset-0 z-50 flex">
-      <div className="absolute inset-0 bg-black bg-opacity-70" onClick={onClose}></div>
-      <div className="relative ml-auto w-80 bg-gray-800 shadow-xl border-l border-gray-700">
+      <div className="absolute inset-0 bg-black/70" onClick={onClose}></div>
+      <div className="relative ml-auto w-full max-w-md bg-gray-950 shadow-2xl border-l border-gray-800">
         <div className="p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-white">Settings</h2>
-            <button onClick={onClose} className="text-gray-400 hover:text-white">×</button>
+          <div className="flex items-center justify-between gap-4 border-b border-gray-800 pb-4">
+            <div>
+              <p className="text-sm uppercase tracking-[0.28em] text-emerald-400">Reader settings</p>
+              <h2 className="mt-2 text-2xl font-semibold text-white">Font controls</h2>
+            </div>
+            <button onClick={onClose} className="rounded-full border border-gray-700 bg-gray-900 px-3 py-2 text-gray-300 transition hover:border-emerald-400 hover:text-white">
+              ×
+            </button>
           </div>
 
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">Arabic Font</label>
+          <div className="mt-6 space-y-6">
+            <div className="rounded-3xl border border-gray-800 bg-gray-900 p-4">
+              <p className="text-sm text-gray-400 mb-2">Arabic Font</p>
               <select
                 value={settings.arabicFont}
                 onChange={(e) => updateSettings({ arabicFont: e.target.value as 'amiri' | 'scheherazade' })}
-                className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white"
+                className="w-full rounded-3xl border border-gray-700 bg-gray-950 px-4 py-3 text-white outline-none focus:border-emerald-400"
               >
                 <option value="amiri">Amiri</option>
                 <option value="scheherazade">Scheherazade</option>
               </select>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Arabic Font Size: {settings.arabicFontSize}px
-              </label>
+            <div className="rounded-3xl border border-gray-800 bg-gray-900 p-4">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <p className="text-sm text-gray-400">Arabic Font Size</p>
+                <span className="text-sm text-emerald-300">{settings.arabicFontSize}px</span>
+              </div>
               <input
                 type="range"
                 min="16"
                 max="48"
                 value={settings.arabicFontSize}
                 onChange={(e) => updateSettings({ arabicFontSize: parseInt(e.target.value) })}
-                className="w-full"
+                className="w-full accent-emerald-400"
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Translation Font Size: {settings.translationFontSize}px
-              </label>
+            <div className="rounded-3xl border border-gray-800 bg-gray-900 p-4">
+              <div className="flex items-center justify-between gap-4 mb-3">
+                <p className="text-sm text-gray-400">Translation Font Size</p>
+                <span className="text-sm text-emerald-300">{settings.translationFontSize}px</span>
+              </div>
               <input
                 type="range"
                 min="12"
                 max="24"
                 value={settings.translationFontSize}
                 onChange={(e) => updateSettings({ translationFontSize: parseInt(e.target.value) })}
-                className="w-full"
+                className="w-full accent-emerald-400"
               />
             </div>
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-emerald-500/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+            <p className="font-medium">Tip</p>
+            <p className="mt-2 text-gray-300">
+              Use the font slider and choose a different Arabic font to make reading easier. Your settings are saved automatically.
+            </p>
           </div>
         </div>
       </div>
