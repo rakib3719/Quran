@@ -61,17 +61,17 @@ export default function SurahExplorer({ surahs }: SurahExplorerProps) {
           <section className="space-y-6 rounded-[2rem] border border-gray-800 bg-gray-950 p-6 shadow-2xl">
             <div className="rounded-[1.75rem] border border-gray-800 bg-[#0b1220] p-5">
               <p className="text-sm uppercase tracking-[0.3em] text-emerald-400">Search Quran</p>
-              <div className="mt-4 flex gap-3">
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                 <input
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   placeholder="Type translation text or surah name..."
-                  className="flex-1 rounded-3xl border border-gray-700 bg-gray-900 px-4 py-3 text-white outline-none transition focus:border-emerald-400"
+                  className="min-w-0 flex-1 rounded-3xl border border-gray-700 bg-gray-900 px-4 py-3 text-white outline-none transition focus:border-emerald-400"
                 />
                 <button
                   type="button"
                   onClick={handleSearch}
-                  className="rounded-3xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-emerald-400"
+                  className="min-w-[120px] flex-shrink-0 rounded-3xl bg-emerald-500 px-5 py-3 text-sm font-semibold text-black transition hover:bg-emerald-400"
                 >
                   Find
                 </button>
