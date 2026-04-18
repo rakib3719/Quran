@@ -1,4 +1,4 @@
-import { Surah, SurahWithAyahs } from '../types/quran.ts';
+import { Surah, SurahWithAyahs } from '../types/quran.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

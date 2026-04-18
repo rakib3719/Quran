@@ -30,4 +30,12 @@ export interface AyahWithTranslation extends Ayah {
 export interface SurahWithAyahsAndTranslation extends Surah {
     ayahs: AyahWithTranslation[];
 }
+export interface Surah {
+    number: number;
+    name: string;
+    englishName: string;
+    englishNameTranslation: string;
+    numberOfAyahs: number;
+    revelationType: string;
+}
 //# sourceMappingURL=quran.d.ts.map

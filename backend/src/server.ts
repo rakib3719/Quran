@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import quranRoutes from './routes/quranRoutes.ts';
+import quranRoutes from './routes/quranRoutes.js';
 
 dotenv.config();
 

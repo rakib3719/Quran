@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAllSurahs, getSurahByNumber, searchAyahs } from '../controllers/quranController.ts';
+import { getAllSurahs, getSurahByNumber, searchAyahs } from '../controllers/quranController.js';
 
 const router = Router();
 

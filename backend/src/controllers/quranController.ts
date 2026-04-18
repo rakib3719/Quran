@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import quranService from '../services/quranService.ts';
+import quranService from '../services/quranService.js';
 
 export const getAllSurahs = (req: Request, res: Response) => {
   try {
