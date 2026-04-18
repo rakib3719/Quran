@@ -1,71 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-class QuranService {
-    quranData = null;
-    constructor() {
-        this.loadQuranData();
-    }
-    loadQuranData() {
-        try {
-            const dataPath = path.resolve(process.cwd(), 'src', 'data', 'quran.json');
-            const data = fs.readFileSync(dataPath, 'utf-8');
-            this.quranData = JSON.parse(data);
-        }
-        catch (error) {
-            console.error('Error loading Quran data:', error);
-            throw new Error('Quran data not found. Please ensure quran.json is in src/data/');
-        }
-    }
-    getAllSurahs() {
-        if (!this.quranData)
-            return [];
-        return this.quranData.map((surah) => ({
-            number: surah.number,
-            name: surah.name,
-            englishName: surah.englishName,
-            englishNameTranslation: surah.englishNameTranslation,
-            numberOfAyahs: surah.numberOfAyahs,
-            revelationType: surah.revelationType,
-        }));
-    }
-    getSurahByNumber(number) {
-        if (!this.quranData)
-            return null;
-        const surah = this.quranData.find((s) => s.number === number);
-        if (!surah)
-            return null;
-        return {
-            ...surah,
-            ayahs: surah.ayahs,
-        };
-    }
-    searchAyahs(query) {
-        if (!this.quranData)
-            return [];
-        const results = [];
-        this.quranData.forEach((surah) => {
-            surah.ayahs.forEach((ayah) => {
-                if (ayah.translation && ayah.translation.text.toLowerCase().includes(query.toLowerCase())) {
-                    results.push({
-                        surah: {
-                            number: surah.number,
-                            name: surah.name,
-                            englishName: surah.englishName,
-                            englishNameTranslation: surah.englishNameTranslation,
-                            numberOfAyahs: surah.numberOfAyahs,
-                            revelationType: surah.revelationType,
-                        },
-                        ayah,
-                        translation: ayah.translation.text,
-                    });
-                }
-            });
-        });
-        return results;
-    }
-}
-export default new QuranService();
+const getAllSurahs = async () => {
+    const response = await fetch('https://api.quran.com/api/v4/chapters');
+    console.log('Response from API:', response);
+    const data = await response.json();
+    return data.chapters;
+};
+const getSurahByNumber = async (number) => {
+    const response = await fetch(`https://api.quran.com/api/v4/chapters/${number}?language=en`);
+    const data = await response.json();
+    return data.chapter;
+};
+const searchAyahs = async (query) => {
+    const response = await fetch(`https://api.quran.com/api/v4/search?q=${encodeURIComponent(query)}&language=en`);
+    const data = await response.json();
+    return data.data.matches;
+};
+export const quranService = {
+    getAllSurahs
+};
 //# sourceMappingURL=quranService.js.map

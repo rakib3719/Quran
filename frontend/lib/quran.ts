@@ -1,47 +1,52 @@
-import { Surah, SurahWithAyahs } from '../types/quran';
-import quranData from '../data/quran.json';
+const getApiBaseUrl = () => {
+  // 1. Priority: Environment variable
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    return process.env.NEXT_PUBLIC_API_BASE_URL;
+  }
 
-export async function getAllSurahs(): Promise<Surah[]> {
-  return quranData.map((surah: any) => ({
-    number: surah.number,
-    name: surah.name,
-    englishName: surah.englishName,
-    englishNameTranslation: surah.englishNameTranslation,
-    numberOfAyahs: surah.numberOfAyahs,
-    revelationType: surah.revelationType,
-  }));
-}
+  // 2. Production: Fixed backend URL
+  if (process.env.NODE_ENV === 'production') {
+    return 'https://quran-nine-sigma.vercel.app';
+  }
 
-export async function getSurahByNumber(number: number): Promise<SurahWithAyahs | null> {
-  const surah = quranData.find((s: any) => s.number === number);
-  if (!surah) return null;
-  return {
-    ...surah,
-    ayahs: surah.ayahs,
-  };
-}
+  // 3. Development: Local backend
+  return 'http://localhost:5000';
+};
 
-export async function searchAyahs(query: string): Promise<{ surah: Surah; ayah: any; translation: string }[]> {
-  const results: { surah: Surah; ayah: any; translation: string }[] = [];
+const API_BASE_URL = getApiBaseUrl();
 
-  quranData.forEach((surah: any) => {
-    surah.ayahs.forEach((ayah: any) => {
-      if (ayah.translation && ayah.translation.text.toLowerCase().includes(query.toLowerCase())) {
-        results.push({
-          surah: {
-            number: surah.number,
-            name: surah.name,
-            englishName: surah.englishName,
-            englishNameTranslation: surah.englishNameTranslation,
-            numberOfAyahs: surah.numberOfAyahs,
-            revelationType: surah.revelationType,
-          },
-          ayah,
-          translation: ayah.translation.text,
-        });
-      }
-    });
+export async function getAllSurahs() {
+  const response = await fetch(`${API_BASE_URL}/api/surahs`, {
+    next: { revalidate: 60 },
   });
 
-  return results;
+  if (!response.ok) {
+    throw new Error('Failed to fetch surah list from API');
+  }
+
+  return response.json();
+}
+
+export async function getSurahByNumber(number: number) {
+  const response = await fetch(`${API_BASE_URL}/api/surahs/${number}`, {
+    next: { revalidate: 60 },
+  });
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
+}
+
+export async function searchAyahs(query: string) {
+  const response = await fetch(`${API_BASE_URL}/api/search?q=${encodeURIComponent(query)}`, {
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    return [];
+  }
+
+  return response.json();
 }

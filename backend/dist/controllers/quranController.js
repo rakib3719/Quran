@@ -1,4 +1,4 @@
-import quranService from '../services/quranService.js';
+import quranService from '../modules/quran/services/quranService.js';
 export const getAllSurahs = (req, res) => {
     try {
         const surahs = quranService.getAllSurahs();
