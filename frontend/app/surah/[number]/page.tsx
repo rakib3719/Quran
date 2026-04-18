@@ -41,7 +41,7 @@ export default async function SurahPage({ params }: PageProps) {
           <p className="text-center text-sm text-gray-400">{surah.numberOfAyahs} verses • {surah.revelationType}</p>
         </div>
 
-        {surah.ayahs?.map((ayah) => (
+        {surah.ayahs?.map((ayah: any) => (
           <div key={ayah.number} className="bg-gray-800 p-6 mb-4 rounded-lg border border-gray-700">
             <div className="flex justify-between items-start mb-4">
               <span className="bg-gray-700 text-gray-200 px-3 py-1 rounded-full text-sm font-medium">

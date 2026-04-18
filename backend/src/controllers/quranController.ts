@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import quranService from '../modules/quran/services/quranService';
-
+import quranService from '../services/quranService.js';
 
 export const getAllSurahs = (req: Request, res: Response) => {
   try {
-
     const surahs = quranService.getAllSurahs();
     res.json(surahs);
   } catch (error) {
