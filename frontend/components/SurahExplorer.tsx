@@ -55,7 +55,7 @@ export default function SurahExplorer({ surahs }: SurahExplorerProps) {
 
   return (
     <div className="min-h-screen bg-[#050608] text-white">
-      <Header title="Quran" showSearch={false} />
+      <Header title="Quran" />
       <main className="mx-auto max-w-7xl px-4 pb-16 pt-8">
         <div className="grid gap-6 xl:grid-cols-[360px_1fr]">
           <section className="space-y-6 rounded-[2rem] border border-gray-800 bg-gray-950 p-6 shadow-2xl">
