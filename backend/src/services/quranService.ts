@@ -15,6 +15,10 @@ const searchAyahs = async (query: string) => {
     return data.data.matches;
 }
 
-export const quranService = {
-    getAllSurahs
-}
+const quranService = {
+  getAllSurahs,
+  getSurahByNumber,
+  searchAyahs
+};
+
+export default quranService;
