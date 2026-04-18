@@ -6,11 +6,11 @@ const getApiBaseUrl = () => {
 
   // 2. Production: Fixed backend URL
   if (process.env.NODE_ENV === 'production') {
-    return 'https://quran-nine-sigma.vercel.app';
+    return 'https://quran-8b4o.onrender.com';
   }
 
   // 3. Development: Local backend
-  return 'http://localhost:5000';
+  return 'https://quran-8b4o.onrender.com';
 };
 
 const API_BASE_URL = getApiBaseUrl();
