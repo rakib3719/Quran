@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --arabic-font-size: 24px;
+  --translation-font-size: 16px;
+  --arabic-font: var(--font-amiri);
 }
 
 @theme inline {
@@ -10,6 +13,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-amiri: var(--font-amiri);
+  --font-scheherazade: var(--font-scheherazade);
+}
+
+.font-arabic {
+  font-family: var(--arabic-font);
 }
 
 @media (prefers-color-scheme: dark) {
