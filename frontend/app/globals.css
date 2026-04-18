@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #050608;
+  --surface: #0f1720;
+  --surface-strong: #111827;
+  --surface-muted: #1f2937;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.18);
   --arabic-font-size: 24px;
   --translation-font-size: 16px;
   --arabic-font: var(--font-amiri);
@@ -17,12 +23,66 @@
   --font-scheherazade: var(--font-scheherazade);
 }
 
+* {
+  scrollbar-color: #334155 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  background: radial-gradient(circle at top, #111827 0%, #050608 70%);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(34, 197, 94, 0.08), transparent 25%), radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.08), transparent 18%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 .font-arabic {
   font-family: var(--arabic-font);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.card-surface {
+  background: var(--surface);
+  border: 1px solid #1f2937;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
+
+.card-soft {
+  background: #111827;
+  border: 1px solid #24303f;
+}
+
+.section-title {
+  color: var(--foreground);
+}
+
+.body-secondary {
+  color: var(--muted);
+}
+

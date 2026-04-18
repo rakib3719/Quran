@@ -16,20 +16,28 @@ export default function Header({ title, showBack = false, backHref = '/', showSe
 
   return (
     <>
-      <header className="bg-white shadow-sm">
+      <header className="bg-gray-950 border-b border-gray-800 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              {showBack && <Link href={backHref} className="text-blue-600 hover:text-blue-800">← Back</Link>}
-              <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              {showBack && (
+                <Link href={backHref} className="rounded-full border border-gray-800 bg-gray-900 px-3 py-2 text-sm text-emerald-300 transition hover:border-emerald-400 hover:text-white">
+                  ← Back
+                </Link>
+              )}
+              <h1 className="text-2xl font-bold text-white">{title}</h1>
             </div>
-            <div className="flex items-center space-x-4">
-              {showSearch && <Link href="/search" className="text-blue-600 hover:text-blue-800">Search</Link>}
+            <div className="flex items-center gap-3">
+              {showSearch && (
+                <Link href="/search" className="rounded-full border border-gray-800 bg-gray-900 px-4 py-2 text-sm text-emerald-300 transition hover:border-emerald-400 hover:text-white">
+                  Search
+                </Link>
+              )}
               <button
                 onClick={() => setSettingsOpen(true)}
-                className="text-gray-600 hover:text-gray-800"
+                className="rounded-full border border-gray-800 bg-gray-900 px-4 py-2 text-sm text-emerald-300 transition hover:border-emerald-400 hover:text-white"
               >
-                ⚙️
+                ⚙️ Settings
               </button>
             </div>
           </div>
