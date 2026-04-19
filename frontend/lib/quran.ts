@@ -6,11 +6,11 @@ const getApiBaseUrl = () => {
 
   // 2. Production: Fixed backend URL
   if (process.env.NODE_ENV === 'production') {
-    return 'https://quran-8b4o.onrender.com';
+    return 'http://localhost:5000';
   }
 
   // 3. Development: Local backend
-  return 'https://quran-8b4o.onrender.com';
+  return 'http://localhost:5000';
 };
 
 const API_BASE_URL = getApiBaseUrl();
